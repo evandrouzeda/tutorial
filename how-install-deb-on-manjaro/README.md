@@ -25,7 +25,7 @@ Now is possible to convert .deb
 debtap your_package.deb
 ```
 
-And finily use pacman to install the converted pkg
+And finally use pacman to install the converted pkg
 
 ```
 sudo pacman -U your-converted-pakage.pkg.tar.zst
