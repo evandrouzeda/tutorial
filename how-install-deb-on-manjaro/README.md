@@ -13,7 +13,7 @@ After installed pacaur, now u can install debtap
 pacaur -S debtap
 ```
 
-With debtap installed execute de command below to init debtap
+With debtap installed execute the command below to init debtap
 
 ```
 sudo debtap -u
