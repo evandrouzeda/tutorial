@@ -5,27 +5,47 @@ Set host name on hosts
 ```
 sudo nano /etc/hosts
 ```
-
-After installed pacaur, now u can install debtap
-
 ```
-pacaur -S debtap
+127.0.0.1  example.com
 ```
 
-With debtap installed execute the command below to init debtap
+edit httpd vhost config file
 
 ```
-sudo debtap -u
+sudo nano /etc/httpd/conf/extra/httpd-vhosts.conf
 ```
 
-Now is possible to convert .deb
+insert the configurations
 
 ```
-debtap your_package.deb
+<VirtualHost *:80>
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /srv/http/example
+    ErrorLog /srv/http/example/error.log
+    CustomLog /srv/http/example/requests.log combined
+</VirtualHost>
 ```
-
-And finally use pacman to install the converted pkg
+Plus if u want https (need to install local cert maker)
 
 ```
-sudo pacman -U your-converted-pakage.pkg.tar.zst
+Listen 443
+<VirtualHost _default_:443>
+        Protocols h2 h2c http/1.1
+    ServerName neolive.com
+    SSLEngine on
+    SSLCertificateFile "/srv/ssl/example.com.pem"
+    SSLCertificateKeyFile "/srv/ssl/example.com-key.pem"
+    DocumentRoot /srv/http/example
+    ErrorLog /srv/http/example/error.log
+    CustomLog /srv/http/example/requests.log combined
+    <Directory "/srv/http/example">
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+```
+After that just create a the directory in the path you put on virtual host
+
+```
+sudo mkdir /srv/http/example
 ```
