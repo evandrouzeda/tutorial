@@ -49,3 +49,21 @@ After that just create a the directory in the path you put on virtual host
 ```
 sudo mkdir /srv/http/example
 ```
+
+### If you want to use Apache as SPA (single page app) add this to http.conf
+```
+sudo nano /etc/httpd/conf/httpd.conf
+```
+```
+# Map all SPA-looking routes to our single page app index file
+<Directory ~ "^/[\w+\d+-]+">
+  FallbackResource /index.html
+</Directory>
+
+# Requests for files should return a real 404 and not fallback to the index.html page, though
+<Files ~ "\.(js|css|gif|jpe?g|png)$">
+  FallbackResource disabled
+  ErrorDocument 404 "File not found"
+</Files>
+```
+from [stackoverflow answer](https://stackoverflow.com/questions/54897317/apache-settings-for-spa-using-html5-history-routing)
