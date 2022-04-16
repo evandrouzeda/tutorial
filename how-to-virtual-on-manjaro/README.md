@@ -26,7 +26,9 @@ insert the configurations
     CustomLog /srv/http/example/requests.log combined
 </VirtualHost>
 ```
-Plus if u want https (need to install local cert maker)
+Plus if u want https (need to install local cert maker, can use mkcert) 
+
+the command Listen 443 only for the first
 
 ```
 Listen 443
