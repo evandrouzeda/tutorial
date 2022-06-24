@@ -1,5 +1,13 @@
 # How to install .deb on manjaro (arch linux)
 
+A good alternative is to see if yay has the package. simple install
+```
+pamac install yay
+```
+```
+yay package-name
+```
+
 The package that convert .deb is debtap, but it is only available on AUR.
 So first u'll need to install pacaur
 
