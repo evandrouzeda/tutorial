@@ -7,7 +7,10 @@ pamac install yay
 ```
 yay package-name
 ```
-
+example with Google Chrome
+```
+yay google-chrome
+```
 The package that convert .deb is debtap, but it is only available on AUR.
 So first u'll need to install pacaur
 
