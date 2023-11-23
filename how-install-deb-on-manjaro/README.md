@@ -12,16 +12,11 @@ example with Google Chrome
 yay google-chrome
 ```
 The package that convert .deb is debtap, but it is only available on AUR.
-So first u'll need to install pacaur
+
+Using **yay** u can install debtap
 
 ```
-sudo pacman -S pacaur
-```
-
-After installed pacaur, now u can install debtap
-
-```
-pacaur -S debtap
+yay -S debtap
 ```
 
 With debtap installed execute the command below to init debtap
