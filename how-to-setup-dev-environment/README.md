@@ -35,7 +35,7 @@ docker run -d -it --name devenv --mount type=bind,source=/home/$USER/GitHub/,tar
 ```
 ## 3. Download and install VsCode to attach to running container
 ```
-flatpak run com.visualstudio.code
+sudo pacman -S snapd
 ```
 ```
 sudo systemctl enable --now snapd.socket
