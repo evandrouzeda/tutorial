@@ -50,3 +50,39 @@ sudo snap install code --classic
 ```
 git clone url_to_repository
 ```
+# Extras
+## Reload Ollama connection with nvidia drives
+```
+#!/bin/bash
+# First stop the service:
+sudo systemctl stop ollama
+
+# Reload nvidia_uvm:
+sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm
+
+# Then restart the service:
+sudo systemctl start ollama
+```
+## Connect Nvidia to Docker
+### 1. Install Nvidia Tookit
+```
+yay -Qs nvidia-container-toolkit
+```
+### 2. Configure Docker
+```
+sudo nvidia-ctk runtime configure --runtime=docker
+```
+### 3. Restart Docker
+```
+sudo systemctl restart docker
+```
+### 4. Test
+```
+docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+```
+More in [Nvidia official guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+
+## Create Python Container that uses Nvidia GPU
+```
+docker run -it --gpus all --runtime nvidia -v /home/$USER/GitHub/python/:/root -w /root --name pydev python:3.10 nvidia-smi
+```
