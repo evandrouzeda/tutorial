@@ -84,5 +84,5 @@ More in [Nvidia official guide](https://docs.nvidia.com/datacenter/cloud-native/
 
 ## Create Python Container that uses Nvidia GPU
 ```
-docker run -it --gpus all --runtime nvidia -v /home/$USER/GitHub/python/:/root -w /root --name pydev python:3.10 nvidia-smi
+docker run -it --gpus all --runtime nvidia -v /home/$USER/GitHub/python/:/root -w /root --network host --name pydev python:3.10
 ```
